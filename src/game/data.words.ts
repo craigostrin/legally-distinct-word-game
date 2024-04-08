@@ -1,3 +1,6 @@
+// Thank you to @cfreshman for archiving these!
+// https://github.com/cfreshman
+
 export const words = [
   'aback',
   'abase',
