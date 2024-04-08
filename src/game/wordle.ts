@@ -1,9 +1,9 @@
 import { allowed } from './data.allowed-guesses'
 import { words } from './data.words'
 
-const GREEN = '🟩'
-const YELLOW = '🟨'
-const GRAY = '⬜️'
+const GREEN = 'green'
+const YELLOW = 'yellow'
+const GRAY = 'gray'
 
 const Wordle = {
   check(guess: string, answer: string): string[] | null {
