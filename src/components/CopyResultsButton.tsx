@@ -2,6 +2,7 @@ import Game from '../game/game'
 import { fullwidth as FW } from '../lib/unicode'
 import { cn } from '../lib/utils'
 import copyIcon from '../assets/copy-solid.svg'
+import Button from './Button'
 
 interface CopyResultsButtonProps {
   className?: string
@@ -24,16 +25,17 @@ function CopyResultsButton({
   }
 
   return (
-    <button
+    <Button
       onClick={copy}
-      className={cn(
-        'bg-green-result text-white py-2 px-4 rounded-md shadow-md',
-        className
-      )}
+      className={cn('bg-green-result text-white', className)}
     >
-      <img className='w-4 h-4 inline' src={copyIcon} /> Copy Result
-    </button>
+      <CopyIcon /> Copy Result
+    </Button>
   )
+}
+
+function CopyIcon() {
+  return <img className='w-4 h-4 mr-1 inline' src={copyIcon} />
 }
 
 function spread(guess: string) {

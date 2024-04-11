@@ -3,6 +3,7 @@ import useGameState from './hooks/useGameState'
 import { LETTER_REGEX, MAX_LENGTH } from './lib/constants'
 import { useKeyDown } from './hooks/useKeyDown'
 import CopyResultsButton from './components/CopyResultsButton'
+import Button from './components/Button'
 
 // TODO:
 // MVP
@@ -51,9 +52,14 @@ function App() {
       <h1>Hello World(le)</h1>
       <Row guess={guess} result={result} isSubmitted={isSubmitted} />
       {!isSubmitted ? (
-        <button onClick={submit}>Submit</button>
+        <Button
+          className='bg-blue-500 text-white font-semibold'
+          onClick={submit}
+        >
+          Submit
+        </Button>
       ) : (
-        <CopyResultsButton guess={guess} result={result} className='mt-4' />
+        <CopyResultsButton guess={guess} result={result} className='mt-' />
       )}
     </div>
   )
