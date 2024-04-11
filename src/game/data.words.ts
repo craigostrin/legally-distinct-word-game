@@ -1,6 +1,7 @@
 // Thank you to @cfreshman for archiving these!
 // https://github.com/cfreshman
 
+// 2309 total
 export const words = [
   'aback',
   'abase',

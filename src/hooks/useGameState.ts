@@ -1,6 +1,6 @@
 import { SetStateAction, useState } from 'react'
 import { MAX_LENGTH } from '../lib/constants'
-import Wordle from '../game/wordle'
+import Game from '../game/game'
 import { isToday } from '../lib/utils'
 
 const emptyInit: string[] = Array(MAX_LENGTH).fill('')
@@ -13,7 +13,7 @@ function useGameState() {
   let hasPlayedToday = !!(lastPlayed && isToday(new Date(lastPlayed)))
   const initGuess = hasPlayedToday ? lastGuess : ''
   const initResult = hasPlayedToday
-    ? Wordle.getResult(lastGuess, new Date(lastPlayed!))!
+    ? Game.getResult(lastGuess, new Date(lastPlayed!))!
     : emptyInit
 
   const [guess, setState] = useState(initGuess)
@@ -31,7 +31,7 @@ function useGameState() {
     console.log('guess:', guess)
     if (guess.length < MAX_LENGTH || isSubmitted) return
 
-    const result = Wordle.getResult(guess, new Date())
+    const result = Game.getResult(guess, new Date())
     if (!result) return
 
     setResult(result)

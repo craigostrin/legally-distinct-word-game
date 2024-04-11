@@ -6,7 +6,7 @@ const GREEN = 'green'
 const YELLOW = 'yellow'
 const GRAY = 'gray'
 
-const Wordle = {
+const Game = {
   // TODO: FIX THIS
   getAnswer(date: Date) {
     let index = 3
@@ -55,4 +55,4 @@ const Wordle = {
   },
 }
 
-export default Wordle
+export default Game

@@ -10,14 +10,14 @@ export default {
       },
       colors: {
         green: {
-          wordle: '#6AA964',
+          result: '#6AA964',
         },
         yellow: {
-          wordle: '#C9B458',
+          result: '#C9B458',
         },
         gray: {
-          wordle: '#787C7E',
-          light: '#D3D6DA',
+          result: '#787C7E',
+          open: '#D3D6DA',
         },
       },
     },
