@@ -20,13 +20,13 @@
   55% {
     transform: rotateX(90deg);
     color: white;
-    background-color: #6aa964;
+    background-color: #49a941;
     border-width: 0px;
   }
   100% {
     transform: rotateX(0);
     color: white;
-    background-color: #6aa964;
+    background-color: #49a941;
     border-width: 0px;
   }
 }
@@ -49,13 +49,13 @@
   55% {
     transform: rotateX(90deg);
     color: white;
-    background-color: #787c7e;
+    background-color: #577e92;
     border-width: 0px;
   }
   100% {
     transform: rotateX(0);
     color: white;
-    background-color: #787c7e;
+    background-color: #577e92;
     border-width: 0px;
   }
 }
@@ -78,13 +78,13 @@
   55% {
     transform: rotateX(90deg);
     color: white;
-    background-color: #c9b458;
+    background-color: #c4993d;
     border-width: 0px;
   }
   100% {
     transform: rotateX(0);
     color: white;
-    background-color: #c9b458;
+    background-color: #c4993d;
     border-width: 0px;
   }
 }
