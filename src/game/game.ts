@@ -6,6 +6,12 @@ const GREEN = 'green'
 const YELLOW = 'yellow'
 const GRAY = 'gray'
 
+const EMOJIS = {
+  green: '🟩',
+  yellow: '🟧',
+  gray: '⬜️',
+} as const
+
 const Game = {
   // TODO: FIX THIS
   getAnswer(date: Date) {
@@ -18,6 +24,9 @@ const Game = {
   getResult(guess: string, date: Date): string[] | null {
     const answer = this.getAnswer(date)
     return this.check(guess, answer)
+  },
+  result2emoji(result: string[]): string[] {
+    return result.map((color) => EMOJIS[color as keyof typeof EMOJIS])
   },
   check(guess: string, answer: string): string[] | null {
     guess = guess.toLowerCase()

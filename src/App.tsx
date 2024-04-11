@@ -2,6 +2,7 @@ import Row from './components/Row'
 import useGameState from './hooks/useGameState'
 import { LETTER_REGEX, MAX_LENGTH } from './lib/constants'
 import { useKeyDown } from './hooks/useKeyDown'
+import CopyResultsButton from './components/CopyResultsButton'
 
 // TODO:
 // MVP
@@ -52,7 +53,7 @@ function App() {
       {!isSubmitted ? (
         <button onClick={submit}>Submit</button>
       ) : (
-        <p>You've already played today</p>
+        <CopyResultsButton guess={guess} result={result} />
       )}
     </div>
   )
