@@ -1,3 +1,4 @@
+import { isToday } from '../lib/utils'
 import { allowed } from './data.allowed-guesses'
 import { words } from './data.words'
 
@@ -6,7 +7,20 @@ const YELLOW = 'yellow'
 const GRAY = 'gray'
 
 const Wordle = {
+  // TODO: FIX THIS
+  getAnswer(date: Date) {
+    let index = 3
+
+    if (isToday(date)) index = 0
+
+    return words[index]
+  },
+  getResult(guess: string, date: Date): string[] | null {
+    const answer = this.getAnswer(date)
+    return this.check(guess, answer)
+  },
   check(guess: string, answer: string): string[] | null {
+    guess = guess.toLowerCase()
     if (!this.isValidGuess(guess)) {
       console.log(`${guess.toUpperCase()} is not a valid guess`)
       return null
