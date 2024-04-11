@@ -9,7 +9,6 @@ import { useKeyDown } from './hooks/useKeyDown'
 // - get answer based on date
 // - styling
 // 2.0
-// - animation
 // - LONGER WORDS for a true MMO challenge
 //   - word get longer as the week goes on?
 

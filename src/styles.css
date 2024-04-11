@@ -1,3 +1,90 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes flip-green {
+  0% {
+    transform: rotateX(0);
+    background-color: white;
+    border: black;
+    border-width: 2px;
+    border-style: solid;
+  }
+  45% {
+    transform: rotateX(90deg);
+    background-color: white;
+    border: black;
+    border-width: 2px;
+    border-style: solid;
+  }
+  55% {
+    transform: rotateX(90deg);
+    color: white;
+    background-color: #6aa964;
+    border-width: 0px;
+  }
+  100% {
+    transform: rotateX(0);
+    color: white;
+    background-color: #6aa964;
+    border-width: 0px;
+  }
+}
+
+@keyframes flip-gray {
+  0% {
+    transform: rotateX(0);
+    background-color: white;
+    border: black;
+    border-width: 2px;
+    border-style: solid;
+  }
+  45% {
+    transform: rotateX(90deg);
+    background-color: white;
+    border: black;
+    border-width: 2px;
+    border-style: solid;
+  }
+  55% {
+    transform: rotateX(90deg);
+    color: white;
+    background-color: #787c7e;
+    border-width: 0px;
+  }
+  100% {
+    transform: rotateX(0);
+    color: white;
+    background-color: #787c7e;
+    border-width: 0px;
+  }
+}
+
+@keyframes flip-yellow {
+  0% {
+    transform: rotateX(0);
+    background-color: white;
+    border: black;
+    border-width: 2px;
+    border-style: solid;
+  }
+  45% {
+    transform: rotateX(90deg);
+    background-color: white;
+    border: black;
+    border-width: 2px;
+    border-style: solid;
+  }
+  55% {
+    transform: rotateX(90deg);
+    color: white;
+    background-color: #c9b458;
+    border-width: 0px;
+  }
+  100% {
+    transform: rotateX(0);
+    color: white;
+    background-color: #c9b458;
+    border-width: 0px;
+  }
+}

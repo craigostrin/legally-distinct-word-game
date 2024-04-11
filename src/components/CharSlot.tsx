@@ -2,20 +2,23 @@ import { VariantProps, cva } from 'class-variance-authority'
 import { cn } from '../lib/utils'
 import React from 'react'
 
-const charSlotVariants = cva('h-16 w-16 flex items-center justify-center', {
-  variants: {
-    variant: {
-      green: 'bg-green-wordle text-white border-none',
-      yellow: 'bg-yellow-wordle text-white border-none',
-      gray: 'bg-gray-wordle text-white border-none',
-      input: 'border-2 border-black text-black',
-      open: 'border-2 border-gray-light text-black',
+const charSlotVariants = cva(
+  'border-2 border-black h-16 w-16 flex items-center justify-center',
+  {
+    variants: {
+      variant: {
+        green: 'animate-flip-green',
+        yellow: 'animate-flip-yellow',
+        gray: 'animate-flip-gray',
+        input: 'text-black',
+        open: 'border-gray-light text-black',
+      },
     },
-  },
-  defaultVariants: {
-    variant: 'open',
-  },
-})
+    defaultVariants: {
+      variant: 'open',
+    },
+  }
+)
 
 export interface CharSlotProps
   extends React.HTMLAttributes<HTMLDivElement>,

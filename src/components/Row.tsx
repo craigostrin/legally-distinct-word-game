@@ -39,7 +39,12 @@ function renderGuess(
   }
 
   return formatted.map(({ char, variant }, i) => (
-    <CharSlot char={char} key={i} variant={variant} />
+    <CharSlot
+      char={char}
+      key={i}
+      variant={variant}
+      style={{ animationDelay: `${200 * i}ms` }}
+    />
   ))
 }
 

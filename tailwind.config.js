@@ -3,6 +3,11 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      animation: {
+        'flip-green': 'flip-green .75s ease forwards',
+        'flip-yellow': 'flip-yellow .75s ease forwards',
+        'flip-gray': 'flip-gray .75s ease forwards',
+      },
       colors: {
         green: {
           wordle: '#6AA964',
