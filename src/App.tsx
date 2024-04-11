@@ -16,6 +16,9 @@ import { useKeyDown } from './hooks/useKeyDown'
 function App() {
   const { guess, setGuess, result, isSubmitted, submit } = useGameState()
 
+  // TODO/DEV: delete this
+  useKeyDown(clearState, ['Escape'])
+
   useKeyDown(addChar, LETTER_REGEX)
   useKeyDown(delChar, ['Backspace'])
   useKeyDown(submit, ['Enter'])
@@ -33,6 +36,10 @@ function App() {
       if (prev.length <= 0) return prev
       return prev.slice(0, -1)
     })
+  }
+
+  function clearState() {
+    localStorage.clear()
   }
 
   return (
