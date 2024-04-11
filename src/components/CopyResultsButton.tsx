@@ -1,12 +1,19 @@
 import Game from '../game/game'
 import { fullwidth as FW } from '../lib/unicode'
+import { cn } from '../lib/utils'
+import copyIcon from '../assets/copy-solid.svg'
 
 interface CopyResultsButtonProps {
+  className?: string
   guess: string
   result: string[]
 }
 
-function CopyResultsButton({ guess, result }: CopyResultsButtonProps) {
+function CopyResultsButton({
+  className,
+  guess,
+  result,
+}: CopyResultsButtonProps) {
   const emojis = Game.result2emoji(result)
   const spreadGuess = spread(guess)
 
@@ -19,9 +26,12 @@ function CopyResultsButton({ guess, result }: CopyResultsButtonProps) {
   return (
     <button
       onClick={copy}
-      className='bg-green-result text-white py-2 px-4 rounded-md shadow-md'
+      className={cn(
+        'bg-green-result text-white py-2 px-4 rounded-md shadow-md',
+        className
+      )}
     >
-      Copy Result
+      <img className='w-4 h-4 inline' src={copyIcon} /> Copy Result
     </button>
   )
 }
