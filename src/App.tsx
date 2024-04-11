@@ -3,8 +3,15 @@ import useGameState from './hooks/useGameState'
 import { LETTER_REGEX, MAX_LENGTH } from './lib/constants'
 import { useKeyDown } from './hooks/useKeyDown'
 
-//TODO: LONGER WORDS for a true MMO challenge
-// - word get longer as the week goes on?
+// TODO:
+// MVP
+// - share button (emojis + letters)
+// - get answer based on date
+// - styling
+// 2.0
+// - animation
+// - LONGER WORDS for a true MMO challenge
+//   - word get longer as the week goes on?
 
 function App() {
   const { guess, setGuess, result, isSubmitted, submit } = useGameState()
