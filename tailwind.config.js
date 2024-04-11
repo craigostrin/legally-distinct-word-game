@@ -10,14 +10,14 @@ export default {
       },
       colors: {
         green: {
-          result: '#6AA964',
+          result: '#49A941',
         },
         yellow: {
-          result: '#C9B458',
+          result: '#C4993D',
         },
         gray: {
-          result: '#787C7E',
-          open: '#D3D6DA',
+          result: '#577E92',
+          open: '#C6CAD0',
         },
       },
     },
