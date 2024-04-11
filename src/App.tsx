@@ -6,14 +6,14 @@ import CopyResultsButton from './components/CopyResultsButton'
 
 // TODO:
 // MVP
-// - share button (emojis + letters)
 // - get answer based on date
 // - styling
 // - feedback for invalid guess
 // 2.0
-// - animation: letter input pops in
+// - animate letter input
 // - LONGER WORDS for a true MMO challenge
 //   - word get longer as the week goes on?
+//   - one really long word for the whole week?
 
 function App() {
   const { guess, setGuess, result, isSubmitted, submit } = useGameState()
@@ -53,7 +53,7 @@ function App() {
       {!isSubmitted ? (
         <button onClick={submit}>Submit</button>
       ) : (
-        <CopyResultsButton guess={guess} result={result} />
+        <CopyResultsButton guess={guess} result={result} className='mt-4' />
       )}
     </div>
   )
