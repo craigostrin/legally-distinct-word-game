@@ -1,40 +1,46 @@
-import { useState } from 'react'
+import { SetStateAction, useState } from 'react'
+import { MAX_LENGTH } from '../lib/constants'
+import Wordle from '../game/wordle'
+import { isToday } from '../lib/utils'
 
-const MAX_LENGTH = 5
+const emptyInit: string[] = Array(MAX_LENGTH).fill('')
 
 // localStorage can only hold strings
 // but for app state, we'll work with string[]s
 function useGameState() {
-  const lastPlayed = localStorage.getItem('lastPlayed')
-  let hasPlayedToday = !!(lastPlayed && isToday(new Date(lastPlayed)))
+  const lastPlayed = localStorage.getItem('lastPlayed') || ''
   const lastGuess = localStorage.getItem('guess') || ''
+  let hasPlayedToday = !!(lastPlayed && isToday(new Date(lastPlayed)))
+  const initGuess = hasPlayedToday ? lastGuess : ''
+  const initResult = hasPlayedToday
+    ? Wordle.getResult(lastGuess, new Date(lastPlayed!))!
+    : emptyInit
 
-  const init = hasPlayedToday ? lastGuess.split('') : []
+  const [guess, setState] = useState(initGuess)
+  const [result, setResult] = useState(initResult)
+  // const [isSubmitted, setIsSubmitted] = useState(hasPlayedToday)
+  let isSubmitted = hasPlayedToday
 
-  const [guess, setState] = useState(init)
-  const [isSubmitted, setIsSubmitted] = useState(hasPlayedToday)
-
-  const setGuess = (word: string[]) => {
+  const setGuess = (callback: SetStateAction<string>) => {
     if (isSubmitted) return
 
-    setState(word)
+    setState(callback)
   }
 
   const submit = () => {
-    if (guess.length < MAX_LENGTH || hasPlayedToday) return
+    console.log('guess:', guess)
+    if (guess.length < MAX_LENGTH || isSubmitted) return
 
-    setIsSubmitted(true)
+    const result = Wordle.getResult(guess, new Date())
+    if (!result) return
+
+    setResult(result)
+    isSubmitted = true
     localStorage.setItem('lastPlayed', new Date().toLocaleString())
-    localStorage.setItem('guess', guess.join(''))
+    localStorage.setItem('guess', guess)
   }
 
-  return { guess, setGuess, isSubmitted, submit }
-}
-
-function isToday(date: Date) {
-  const today = new Date().setHours(0, 0, 0, 0)
-
-  return today === date.setHours(0, 0, 0, 0)
+  return { guess, setGuess, result, isSubmitted, submit }
 }
 
 export default useGameState
