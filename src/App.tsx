@@ -4,9 +4,12 @@ import { LETTER_REGEX, MAX_LENGTH } from './lib/constants'
 import { useKeyDown } from './hooks/useKeyDown'
 import CopyResultsButton from './components/CopyResultsButton'
 import Button from './components/Button'
+import KbKey from './components/keyboard/KbKey'
+import Keyboard from './components/keyboard/Keyboard'
 
 // TODO:
 // MVP
+// - MAKE IT WORK ON MOBILE
 // - get answer based on date
 // - styling
 // - feedback for invalid guess
@@ -49,7 +52,7 @@ function App() {
 
   return (
     <div className='py-6 gap-4 flex flex-col items-center'>
-      <h1>Hello World(le)</h1>
+      <h1>{'You only get one guess >:)'}</h1>
       <Row guess={guess} result={result} isSubmitted={isSubmitted} />
       {!isSubmitted ? (
         <Button
@@ -61,6 +64,7 @@ function App() {
       ) : (
         <CopyResultsButton guess={guess} result={result} className='mt-' />
       )}
+      <Keyboard addChar={addChar} delChar={delChar} submit={submit} />
     </div>
   )
 }
