@@ -3,7 +3,6 @@ import useGameState from './hooks/useGameState'
 import { LETTER_REGEX, MAX_LENGTH } from './lib/constants'
 import { useKeyDown } from './hooks/useKeyDown'
 import CopyResultsButton from './components/CopyResultsButton'
-import Button from './components/Button'
 import Keyboard from './components/keyboard/Keyboard'
 
 // TODO:
@@ -50,20 +49,13 @@ function App() {
   }
 
   return (
-    <div className='py-6 gap-4 flex flex-col items-center'>
-      <h1>{'You only get one guess >:)'}</h1>
+    <div className='pt-28 gap-4 h-screen flex flex-col items-center'>
+      <p>{'You only get one guess >:)'}</p>
       <Row guess={guess} result={result} isSubmitted={isSubmitted} />
-      {!isSubmitted ? (
-        <Button
-          className='bg-blue-500 text-white font-semibold'
-          onClick={submit}
-        >
-          Submit
-        </Button>
-      ) : (
-        <CopyResultsButton guess={guess} result={result} className='mt-' />
-      )}
       <Keyboard addChar={addChar} delChar={delChar} submit={submit} />
+      {isSubmitted && (
+        <CopyResultsButton guess={guess} result={result} className='mt-4' />
+      )}
     </div>
   )
 }
