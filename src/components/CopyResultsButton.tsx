@@ -4,6 +4,9 @@ import { cn } from '../lib/utils'
 import copyIcon from '../assets/copy-solid.svg'
 import Button from './Button'
 
+const ERROR_MESSAGE =
+  "Oops, something went wrong.\n\nPlease let the admin know what device and browser you're using so they can fix the bug <3"
+
 interface CopyResultsButtonProps {
   className?: string
   guess: string
@@ -19,12 +22,21 @@ function CopyResultsButton({
   const spreadGuess = spread(guess)
 
   function copy() {
+    let hasShared = false
     const text = `${spreadGuess}\n${emojis.join('')}`
     try {
-      navigator.share({ text }).catch((error) => alert(error.message))
-    } catch (error) {
-      //@ts-ignore
-      alert(error.message)
+      if (!!navigator.clipboard && !!navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          hasShared = true
+          alert(`Copied to clipboard:\n\n${text}`)
+        })
+      }
+      if (!hasShared && !!navigator.share && navigator.canShare({ text })) {
+        navigator.share({ text })
+      }
+      alert(ERROR_MESSAGE)
+    } catch (_) {
+      alert(ERROR_MESSAGE)
     }
   }
   // function copy() {
