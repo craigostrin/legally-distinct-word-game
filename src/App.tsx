@@ -7,15 +7,13 @@ import Keyboard from './components/keyboard/Keyboard'
 
 // TODO:
 // MVP
-// - MAKE IT WORK ON MOBILE
 // - get answer based on date
-// - styling
 // - feedback for invalid guess
 // 2.0
 // - animate letter input
 // - LONGER WORDS for a true MMO challenge
-//   - word get longer as the week goes on?
-//   - one really long word for the whole week?
+//   * word get longer as the week goes on?
+//   * one really long word for the whole week?
 
 function App() {
   const { guess, setGuess, result, isSubmitted, submit } = useGameState()
@@ -49,7 +47,7 @@ function App() {
   }
 
   return (
-    <div className='pt-28 gap-4 h-screen flex flex-col items-center'>
+    <div className='pt-52 gap-4 h-screen flex flex-col items-center'>
       <p>{'You only get one guess >:)'}</p>
       <Row guess={guess} result={result} isSubmitted={isSubmitted} />
       <Keyboard addChar={addChar} delChar={delChar} submit={submit} />

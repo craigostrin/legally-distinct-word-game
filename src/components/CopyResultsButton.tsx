@@ -4,6 +4,9 @@ import { cn } from '../lib/utils'
 import copyIcon from '../assets/copy-solid.svg'
 import Button from './Button'
 
+const ERROR_MESSAGE =
+  "Oops, something went wrong.\n\nPlease let the admin know what device and browser you're using so they can fix the bug <3"
+
 interface CopyResultsButtonProps {
   className?: string
   guess: string
@@ -20,14 +23,32 @@ function CopyResultsButton({
 
   function copy() {
     const text = `${spreadGuess}\n${emojis.join('')}`
-    navigator.clipboard.writeText(text)
-    alert(`Copied to clipboard:\n\n${text}`)
+    try {
+      // turns out, both of these work fine on mobile, as long as you're on HTTPS
+      if (!!navigator.clipboard && !!navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          alert(`Copied to clipboard:\n\n${text}`)
+        })
+        return
+      }
+      if (!!navigator.share && navigator.canShare({ text })) {
+        navigator.share({ text })
+        return
+      }
+
+      alert(ERROR_MESSAGE)
+    } catch (_) {
+      alert(ERROR_MESSAGE)
+    }
   }
 
   return (
     <Button
       onClick={copy}
-      className={cn('bg-green-result text-white', className)}
+      className={cn(
+        'bg-green-result active:bg-green-700 text-white',
+        className
+      )}
     >
       <CopyIcon /> Copy Result
     </Button>
