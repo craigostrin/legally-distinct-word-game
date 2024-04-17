@@ -24,6 +24,7 @@ function CopyResultsButton({
   function copy() {
     const text = `${spreadGuess}\n${emojis.join('')}`
     try {
+      // turns out, both of these work fine on mobile, as long as you're on HTTPS
       if (!!navigator.clipboard && !!navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(() => {
           alert(`Copied to clipboard:\n\n${text}`)
@@ -40,17 +41,6 @@ function CopyResultsButton({
       alert(ERROR_MESSAGE)
     }
   }
-  // function copy() {
-  //   const text = `${spreadGuess}\n${emojis.join('')}`
-  //   navigator.clipboard
-  //     .writeText(text)
-  //     .then(() => {
-  //       alert(`Copied to clipboard:\n\n${text}`)
-  //     })
-  //     .catch(() => {
-  //       alert('Oops, something went wrong')
-  //     })
-  // }
 
   return (
     <Button
