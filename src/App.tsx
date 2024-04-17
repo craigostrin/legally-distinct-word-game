@@ -4,7 +4,6 @@ import { LETTER_REGEX, MAX_LENGTH } from './lib/constants'
 import { useKeyDown } from './hooks/useKeyDown'
 import CopyResultsButton from './components/CopyResultsButton'
 import Button from './components/Button'
-import KbKey from './components/keyboard/KbKey'
 import Keyboard from './components/keyboard/Keyboard'
 
 // TODO:
