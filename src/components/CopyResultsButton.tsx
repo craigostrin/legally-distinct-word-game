@@ -22,18 +22,19 @@ function CopyResultsButton({
   const spreadGuess = spread(guess)
 
   function copy() {
-    let hasShared = false
     const text = `${spreadGuess}\n${emojis.join('')}`
     try {
       if (!!navigator.clipboard && !!navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(() => {
-          hasShared = true
           alert(`Copied to clipboard:\n\n${text}`)
         })
+        return
       }
-      if (!hasShared && !!navigator.share && navigator.canShare({ text })) {
+      if (!!navigator.share && navigator.canShare({ text })) {
         navigator.share({ text })
+        return
       }
+
       alert(ERROR_MESSAGE)
     } catch (_) {
       alert(ERROR_MESSAGE)
