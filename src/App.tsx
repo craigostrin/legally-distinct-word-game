@@ -49,7 +49,7 @@ function App() {
   }
 
   return (
-    <div className='pt-28 gap-4 h-screen flex flex-col items-center'>
+    <div className='pt-52 gap-4 h-screen flex flex-col items-center'>
       <p>{'You only get one guess >:)'}</p>
       <Row guess={guess} result={result} isSubmitted={isSubmitted} />
       <Keyboard addChar={addChar} delChar={delChar} submit={submit} />

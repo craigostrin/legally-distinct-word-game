@@ -20,14 +20,32 @@ function CopyResultsButton({
 
   function copy() {
     const text = `${spreadGuess}\n${emojis.join('')}`
-    navigator.clipboard.writeText(text)
-    alert(`Copied to clipboard:\n\n${text}`)
+    try {
+      navigator.share({ text }).catch((error) => alert(error.message))
+    } catch (error) {
+      //@ts-ignore
+      alert(error.message)
+    }
   }
+  // function copy() {
+  //   const text = `${spreadGuess}\n${emojis.join('')}`
+  //   navigator.clipboard
+  //     .writeText(text)
+  //     .then(() => {
+  //       alert(`Copied to clipboard:\n\n${text}`)
+  //     })
+  //     .catch(() => {
+  //       alert('Oops, something went wrong')
+  //     })
+  // }
 
   return (
     <Button
       onClick={copy}
-      className={cn('bg-green-result text-white', className)}
+      className={cn(
+        'bg-green-result active:bg-green-700 text-white',
+        className
+      )}
     >
       <CopyIcon /> Copy Result
     </Button>
