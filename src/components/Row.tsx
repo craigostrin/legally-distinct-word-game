@@ -1,4 +1,4 @@
-import { MAX_LENGTH } from '../lib/constants'
+import { MAX_LENGTH, Result } from '../lib/constants'
 import { CharSlot } from './CharSlot'
 
 function Row({
@@ -7,7 +7,7 @@ function Row({
   isSubmitted,
 }: {
   guess: string
-  result: string[]
+  result: Result[] | null
   isSubmitted: boolean
 }) {
   return (
@@ -19,7 +19,7 @@ function Row({
 
 function renderGuess(
   guess: string,
-  result: string[],
+  result: Result[] | null,
   isSubmitted: boolean,
   maxLength = MAX_LENGTH
 ) {
@@ -34,7 +34,7 @@ function renderGuess(
     if (!isSubmitted) {
       formatted[i] = { char, variant: 'input' }
     } else {
-      formatted[i] = { char, variant: result[i] }
+      formatted[i] = { char, variant: result![i] }
     }
   }
 

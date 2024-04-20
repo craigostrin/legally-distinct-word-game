@@ -1,12 +1,8 @@
+import Game from '../game/game'
 import { SetStateAction, useState } from 'react'
 import { MAX_LENGTH } from '../lib/constants'
-import Game from '../game/game'
 import { isToday } from '../lib/utils'
 
-const emptyInit: string[] = Array(MAX_LENGTH).fill('')
-
-// localStorage can only hold strings
-// but for app state, we'll work with string[]s
 function useGameState() {
   const lastPlayed = localStorage.getItem('lastPlayed') || ''
   const lastGuess = localStorage.getItem('guess') || ''
@@ -14,7 +10,7 @@ function useGameState() {
   const initGuess = hasPlayedToday ? lastGuess : ''
   const initResult = hasPlayedToday
     ? Game.getResult(lastGuess, new Date(lastPlayed!))!
-    : emptyInit
+    : null
 
   const [guess, setState] = useState(initGuess)
   const [result, setResult] = useState(initResult)
@@ -28,7 +24,6 @@ function useGameState() {
   }
 
   const submit = () => {
-    console.log('guess:', guess)
     if (guess.length < MAX_LENGTH || isSubmitted) return
 
     const result = Game.getResult(guess, new Date())

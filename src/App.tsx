@@ -51,7 +51,7 @@ function App() {
       <p>{'You only get one guess >:)'}</p>
       <Row guess={guess} result={result} isSubmitted={isSubmitted} />
       <Keyboard addChar={addChar} delChar={delChar} submit={submit} />
-      {isSubmitted && (
+      {isSubmitted && result && (
         <CopyResultsButton guess={guess} result={result} className='mt-4' />
       )}
     </div>
