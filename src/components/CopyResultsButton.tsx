@@ -3,6 +3,7 @@ import { fullwidth as FW } from '../lib/unicode'
 import { cn } from '../lib/utils'
 import copyIcon from '../assets/copy-solid.svg'
 import Button from './Button'
+import { Result } from '../lib/constants'
 
 const ERROR_MESSAGE =
   "Oops, something went wrong.\n\nPlease let the admin know what device and browser you're using so they can fix the bug <3"
@@ -10,7 +11,7 @@ const ERROR_MESSAGE =
 interface CopyResultsButtonProps {
   className?: string
   guess: string
-  result: string[]
+  result: Result[]
 }
 
 function CopyResultsButton({
