@@ -18,7 +18,7 @@ function App() {
   const [errorMessage, setErrorMessage] = useState('')
 
   // DEV: FOR DEBUGGING
-  // useKeyDown(clearState, ['?'])
+  // useKeyDown(() => localStorage.clear(), ['?'])
 
   useKeyDown(addChar, LETTER_REGEX)
   useKeyDown(delChar, ['Backspace'])
@@ -47,10 +47,6 @@ function App() {
       if (prev.length <= 0) return prev
       return prev.slice(0, -1)
     })
-  }
-
-  function clearState() {
-    localStorage.clear()
   }
 
   return (
