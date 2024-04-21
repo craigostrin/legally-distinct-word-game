@@ -11,10 +11,9 @@ export function isToday(date: Date) {
   return today === date.setHours(0, 0, 0, 0)
 }
 
-export function daysSince(date: Date): number {
-  const now = new Date()
-  const today = utcFromLocal(now)
-  const diff = today.getTime() - date.getTime()
+export function daysBetween(date1: Date, date2 = new Date()): number {
+  const date2utc = utcFromLocal(date2)
+  const diff = Math.abs(date2utc.getTime() - date1.getTime())
   return Math.floor(diff / (1000 * 60 * 60 * 24))
 }
 
