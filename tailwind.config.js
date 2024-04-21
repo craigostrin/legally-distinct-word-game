@@ -7,6 +7,7 @@ export default {
         'flip-green': 'flip-green .75s ease forwards',
         'flip-yellow': 'flip-yellow .75s ease forwards',
         'flip-gray': 'flip-gray .75s ease forwards',
+        rotato: 'rotato 0.5s ease',
       },
       colors: {
         green: {

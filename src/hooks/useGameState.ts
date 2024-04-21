@@ -24,15 +24,18 @@ function useGameState() {
   }
 
   const submit = () => {
-    if (guess.length < MAX_LENGTH || isSubmitted) return
+    if (isSubmitted) return
+
+    if (guess.length < MAX_LENGTH) return 'Oops'
 
     const result = Game.getResult(guess, new Date())
-    if (!result) return
+    if (!result) return 'Is that a real word?'
 
     setResult(result)
     isSubmitted = true
     localStorage.setItem('lastPlayed', new Date().toLocaleString())
     localStorage.setItem('guess', guess)
+    return 0
   }
 
   return { guess, setGuess, result, isSubmitted, submit }

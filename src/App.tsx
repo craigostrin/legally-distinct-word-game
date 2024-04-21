@@ -4,26 +4,33 @@ import { LETTER_REGEX, MAX_LENGTH } from './lib/constants'
 import { useKeyDown } from './hooks/useKeyDown'
 import CopyResultsButton from './components/CopyResultsButton'
 import Keyboard from './components/keyboard/Keyboard'
+import { useState } from 'react'
 
 // TODO:
-// MVP
-// - get answer based on date
-// - feedback for invalid guess
 // 2.0
-// - animate letter input
 // - LONGER WORDS for a true MMO challenge
 //   * word get longer as the week goes on?
 //   * one really long word for the whole week?
 
 function App() {
   const { guess, setGuess, result, isSubmitted, submit } = useGameState()
+  const [animate, setAnimate] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   // TODO/DEV: delete this
   useKeyDown(clearState, ['Escape'])
 
   useKeyDown(addChar, LETTER_REGEX)
   useKeyDown(delChar, ['Backspace'])
-  useKeyDown(submit, ['Enter'])
+  useKeyDown(onSubmit, ['Enter'])
+
+  function onSubmit() {
+    const result = submit()
+    if (typeof result === 'string') {
+      setAnimate(true)
+      setErrorMessage(result)
+    }
+  }
 
   function addChar(char: string) {
     if (isSubmitted) return
@@ -48,7 +55,21 @@ function App() {
 
   return (
     <div className='pt-52 gap-4 h-screen flex flex-col items-center'>
-      <p>{'You only get one guess >:)'}</p>
+      {errorMessage ? (
+        <p
+          className={`
+          ${animate && 'animate-rotato'}
+          text-red-600 font-semibold`}
+          onAnimationEnd={() => {
+            setAnimate(false)
+            setTimeout(() => setErrorMessage(''), 1000)
+          }}
+        >
+          {errorMessage}
+        </p>
+      ) : (
+        <p className='font-semibold'>{'You only get one guess >:)'}</p>
+      )}
       <Row guess={guess} result={result} isSubmitted={isSubmitted} />
       <Keyboard addChar={addChar} delChar={delChar} submit={submit} />
       {isSubmitted && result && (

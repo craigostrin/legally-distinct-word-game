@@ -88,3 +88,12 @@
     border-width: 0px;
   }
 }
+
+@keyframes rotato {
+  40% {
+    transform: rotate(-25deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
