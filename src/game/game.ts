@@ -1,15 +1,11 @@
-import { Emoji, RESULTS, Result } from '../lib/constants'
-import { isToday } from '../lib/utils'
+import { Emoji, N30, RESULTS, Result } from '../lib/constants'
+import { daysBetween } from '../lib/utils'
 import { allowed } from './data.allowed-guesses'
 import { words } from './data.words-randomized'
 
 const Game = {
-  // TODO: FIX THIS
   getAnswer(date: Date): string {
-    let index = 3
-
-    if (isToday(date)) index = 0
-
+    const index = daysBetween(N30, date) % words.length
     return words[index]
   },
   getResult(guess: string, date: Date): Result[] | null {
