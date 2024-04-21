@@ -17,8 +17,8 @@ function App() {
   const [animate, setAnimate] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
-  // TODO/DEV: delete this
-  useKeyDown(clearState, ['Escape'])
+  // DEV: FOR DEBUGGING
+  // useKeyDown(clearState, ['?'])
 
   useKeyDown(addChar, LETTER_REGEX)
   useKeyDown(delChar, ['Backspace'])
@@ -71,7 +71,7 @@ function App() {
         <p className='font-semibold'>{'You only get one guess >:)'}</p>
       )}
       <Row guess={guess} result={result} isSubmitted={isSubmitted} />
-      <Keyboard addChar={addChar} delChar={delChar} submit={submit} />
+      <Keyboard addChar={addChar} delChar={delChar} onSubmit={onSubmit} />
       {isSubmitted && result && (
         <CopyResultsButton guess={guess} result={result} className='mt-4' />
       )}
